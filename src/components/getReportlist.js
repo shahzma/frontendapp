@@ -39,7 +39,7 @@ class Books extends Component {
 
   handleOnClick = (report, is_admin) =>{
       console.log('handleonclickReport', report);
-      console.log('isAdminini=', is_admin)
+      console.log('isAdmin=', is_admin)
     //   window.location.href="/ReportVersion"
       this.props.getReportName(report, is_admin);
     //   if(true){
@@ -56,16 +56,17 @@ class Books extends Component {
     return (
       <div className='listContainer'>
         <h2 style={{textAlign:'Center'}}>Available Reports</h2>
+        <h3 style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'2px solid #A0AEBF'}}>File Name <div style={{float:'right'}}>Actions</div></h3>
         { this.state.books.map( book => {
           return (
           <h3 key={book.id} className="task">
             {book.report}
-            {/* <button onClick = {()=>this.handleOnClick(book.report)}>ReportVersion</button> */}
-            <Link to="/ReportVersion" style={{float:'right'}} onClick = {()=>this.handleOnClick(book.report, book.is_admin)} className="btn btn-primary">ReportVersions</Link>
+            <Link to="/ReportVersion" style={{float:'right'}} onClick = {()=>this.handleOnClick(book.report, book.is_admin)} className="btn btn-primary">
+              ReportVersions
+            </Link>
             
           </h3>)
         })}
-        {/* <button onClick = {this.handleOnClick}>Uploadfile</button> */}
         <br/>
       </div>
     );

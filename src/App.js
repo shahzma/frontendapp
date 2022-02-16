@@ -5,6 +5,7 @@ import GetReportlist from './components/getReportlist';
 import Login from './components/login';
 import ReportVersion from './components/ReportVersion';
 import UploadFiles from './components/UploadFiles';
+import Test from './components/test';
 
 function App() {
 
@@ -27,11 +28,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path = "/" element = {<div className="Appp"><Login userLogin={userLogin}/></div>}></Route>
+        <Route path = "/" element = {<Login userLogin={userLogin}/>}></Route>
         {console.log('RouterToken=',Token)}
         <Route path = "/reportlist" element = {<GetReportlist Token={Token} getReportName={getReportName}/>}/>
         <Route path = "/ReportVersion" element = {<ReportVersion Token={Token} Reportname={Reportname} IsAdmin = {IsAdmin}/>}/>
         <Route path = "/UploadFiles" element = {<UploadFiles Token = {Token} Reportname={Reportname} IsAdmin = {IsAdmin}/>}/>
+        <Route path = "/Test" element = {<Test/>}/>
       </Routes>
     </Router>
 

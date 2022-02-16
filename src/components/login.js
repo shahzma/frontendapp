@@ -1,8 +1,7 @@
 
 import React, { Component} from 'react';
-// import {useNavigate} from 'react-router-dom';
-// import { Navigate } from "react-router-dom";
 import {Navigate} from 'react-router-dom';
+import Header from './header';
 
 class Login extends Component {
     constructor(props){
@@ -13,12 +12,6 @@ class Login extends Component {
             loggedIn
         }
     }
-
-
-//   state = {
-//     credentials: {username: '', password: ''},
-//     loggedIn
-//   }
 
   login = event => {
       event.preventDefault()// to stop submit form from immedeatly moving on without waiting for result
@@ -42,21 +35,7 @@ class Login extends Component {
     .catch( error => console.error(error))
     // <Navigate to="/reportlist"/>
   }
-
-//   register = event => {
-//     fetch('http://127.0.0.1:8000/api/users/', {
-//       method: 'POST',
-//       headers: {'Content-Type': 'application/json'},
-//       body: JSON.stringify(this.state.credentials)
-//     })
-//     .then( data => data.json())
-//     .then(
-//       data => {
-//         console.log(data.token);
-//       }
-//     )
-//     .catch( error => console.error(error))
-//   }
+  
   inputChanged = event => {
     const cred = this.state.credentials;
     cred[event.target.name] = event.target.value;
@@ -69,21 +48,32 @@ class Login extends Component {
             return <Navigate to = "/reportlist"/>
         }
     return (
-        <form onSubmit={this.login}>
-            <div className='form-inner'>
-                <h2>User Login</h2>
-                <div className='form-group'>
-                    <label htmlFor='username'>UserName</label>
-                    <input type = 'text' name = 'username' id='username' value={this.state.credentials.username} onChange={this.inputChanged}/>
+      <div className="App">
+        <div className="auth-wrapper">
+        <div className="auth-inner">
+            <form onSubmit={this.login}>
+                <h3>Sign In</h3>
+                <div className="form-group">
+                    <label>Username</label>
+                    {/* <input type="text" className="form-control" placeholder="Enter Username" value={this.state.credentials.username} onChange={this.inputChanged}/> */}
+                    <input type = 'text' name = 'username' id='username' className="form-control" value={this.state.credentials.username} onChange={this.inputChanged}/>
                 </div>
-                <div className='form-group'>
-                    <label htmlFor='password'>Password:</label>
-                    <input type = 'password' name = 'password' id='password' value={this.state.credentials.password} onChange={this.inputChanged}/>
+                <div className="form-group">
+                    <label>Password</label>
+                    <input type = 'password' className="form-control" name = 'password' id='password' value={this.state.credentials.password} onChange={this.inputChanged}/>
+                    {/* <input type="password" className="form-control" placeholder="Enter password" value={this.state.credentials.password} onChange={this.inputChanged}/> */}
                 </div>
-                <input type = 'submit' value = 'Login'/>
-            </div>
-
-        </form>
+                <div className="form-group">
+                    <div className="custom-control custom-checkbox">
+                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                    </div>
+                </div>
+                <button type="submit" className="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+  </div>
 
     );
   }
