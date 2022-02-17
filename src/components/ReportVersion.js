@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import {Link, Navigate} from 'react-router-dom';
-
+import img1 from '../images/Redseer_red.jpeg';
+import Header from './header';
+import{Container, Row, Col } from 'react-bootstrap'
+import { Breadcrumb } from 'react-bootstrap';
 
 function ReportVersion(props) {
 
     const [ ReportVersion, setReportVersion ] = useState([]);
 
     useEffect(()=>{
-        console.log('useeffect');
         const encodedValue = encodeURIComponent(props.Reportname);
         fetch(`http://127.0.0.1:8000/api/reportversion/?report_name=${encodedValue}`, {
         method: 'GET',
@@ -32,7 +34,6 @@ function ReportVersion(props) {
     }
 
     let getFileOnClick=(fileAddress)=>{
-        console.log('click')
         window.location.href=fileAddress
     }
 
@@ -42,21 +43,46 @@ function ReportVersion(props) {
 
   return (
     <div>
-    <div className='listContainer'>
-        <h1 style={{textAlign:'center'}}>Available Report versions</h1>
-        {ReportVersion.map( repver=>{
-            return (
-            <h5 key={repver.id} className="task">
-                {repver.report_version_name}
-                <button style={{float:'right'}} onClick = {()=>getFileOnClick(repver.file)} className="btn btn-primary">
-                    Get File
-                </button>
-            </h5>)
-        })}
-        {/* <button onClick = {()=>handleOnClick()}>Uploadfile</button> */}
-    </div>
-    {props.IsAdmin?<Link to="/UploadFiles" style={{marginLeft:25}}onClick = {()=>handleOnClick()} className="btn btn-primary">Upload Files</Link>:''}
-    {/* <Link to="/UploadFiles" style={{marginLeft:25}}onClick = {()=>handleOnClick()} className="btn btn-primary">Upload Files</Link> */}
+        <Header/>
+        <Breadcrumb>
+            <Breadcrumb.Item href="/">Logout</Breadcrumb.Item>
+            <Breadcrumb.Item href = '#'>
+                Reports
+            </Breadcrumb.Item>
+            <Breadcrumb.Item active>Reportversions</Breadcrumb.Item>
+        </Breadcrumb>
+        <h2 style={{textAlign:'center', marginTop:'20px'}}>Available Report versions</h2>
+        <div className='listContainer'>
+            {/* <h6 style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>File Name <div style={{float:'right'}}>Actions</div></h6> */}
+            <Row style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>
+                <Col sm={5}>File Name</Col>
+                <Col sm={4}>Date</Col>
+                <Col sm={3}><div style={{float:'right'}}>Actions</div></Col>
+            </Row>
+            {ReportVersion.map( repver=>{
+                return (
+                // <h5 key={repver.id} className="task">
+                //     {repver.report_version_name}{repver.created_on.split('T')[0]}
+                    // <button style={{float:'right'}} onClick = {()=>getFileOnClick(repver.file)} className="btn btn-primary">
+                    //     Get File
+                    // </button>
+                // </h5>
+
+                <Row key={repver.id} className="task">
+                    <Col sm={5} style={{fontWeight:'bold'}}>{repver.report_version_name}</Col>
+                    <Col sm={4} style={{fontWeight:'bold'}}>{repver.created_on.split('T')[0]}</Col>
+                    <Col sm={3}>
+                    <button style={{float:'right'}} onClick = {()=>getFileOnClick(repver.file)} className="btn btn-primary">
+                        Get File
+                    </button>
+                    </Col>
+                </Row>
+                )
+            }
+            )}
+            {/* <button onClick = {()=>handleOnClick()}>Uploadfile</button> */}
+        </div>
+        {props.IsAdmin?<Link to="/UploadFiles" style={{marginLeft:40}}onClick = {()=>handleOnClick()} className="btn btn-primary">Upload Files</Link>:''}
     </div>
   )
 }

@@ -5,7 +5,7 @@
 }
 body {
   /* background: #1C8EF9; */
-  /* background: #FF6961;  */
+  background: #F7FAFC; 
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -28,6 +28,7 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .auth-wrapper {
+  background-color: #Ff6961;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -74,7 +75,8 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .task {
-    background: #f4f4f4;
+    background:White;
+    border-bottom: 1px solid #CDD5DE;
     margin: 5px;
     padding: 10px 20px;
     cursor: pointer;
@@ -82,9 +84,10 @@ body, html, .App, #root, .auth-wrapper {
   
 .listContainer {
 margin: 2%;
-border: 3px solid grey;
-border-radius: 5px;
+/* border: 1px solid #A0AEBE; */
+border-radius: 15px;
 padding: 8px;
+background-color: white;
 }
   
 footer{
@@ -95,3 +98,18 @@ background-color: black;
 text-align: center;
 color: red;
 }
+
+.breadcrumb {
+  padding-left: 2vw;
+  background-color: #F7FAFC;
+}
+
+.uploadContainer {
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 2%;
+  /* border: 1px solid #A0AEBE; */
+  border-radius: 15px;
+  padding: 5%;
+  background-color: white;
+  }

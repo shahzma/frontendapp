@@ -2,6 +2,9 @@
 import React, { Component} from 'react';
 import {Navigate} from 'react-router-dom';
 import Header from './header';
+import { Link } from "react-router-dom";
+import img1 from '../images/Redseer_red.jpeg';
+
 
 class Login extends Component {
     constructor(props){
@@ -49,6 +52,14 @@ class Login extends Component {
         }
     return (
       <div className="App">
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top">  
+            <div className="container">
+            {/* <Link className="navbar-brand" to={"/"}>Redseer</Link> */}
+            <img src = {img1} style={{height:'40px'}}  alt=' Redseer logo'/>
+            </div>
+        </nav> 
+
+
         <div className="auth-wrapper">
         <div className="auth-inner">
             <form onSubmit={this.login}>
@@ -69,11 +80,11 @@ class Login extends Component {
                         <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                <button type="submit" className="btn btn-primary btn-block" >Submit</button>
             </form>
         </div>
+      </div>
     </div>
-  </div>
 
     );
   }

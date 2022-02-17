@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import '../App.css';
+// import '../App.css';
 import {Navigate} from 'react-router-dom';
+import Header from './header';
 
 
 function UploadFiles(props) {
@@ -30,34 +31,47 @@ function UploadFiles(props) {
       return <Navigate to = "/"/>
   }
 
-    if(!props.IsAdmin){
-      return <Navigate to = '/'/>
-    }
+    // if(!props.IsAdmin){
+    //   return <Navigate to = '/'/>
+    // }
 
   return (
-    <div className="App">
-       <br/>
-      <h1>Upload your files here</h1>
-      <br/>
-      {/* <label>
-        Report Name
-        <input type="text" value={reportname} onChange={(evt) => setReportName(evt.target.value)}/>
-      </label> */}
-      <br/>
-      <br/>
-      <label>
-        ReportVersion
-        <input type="text" value={reportversionname} onChange={(evt) => setReportversionname(evt.target.value)}/>
-      </label>
-      <br/>
-      <br/>
-      <label>
-        Select
-        <input type="file" onChange={(evt) => setFile(evt.target.files[0])}/>
-      </label>
-      <br/>
-      <br/>
-      <button onClick={() => newFile()}>Upload</button>
+    <div>
+      <Header/>
+      <h2 style={{textAlign:'center', marginTop:'20px'}}>Upload Your Files Here</h2>
+      {/* <div className="App">
+        <br/>
+        <h1>Upload your files here</h1>
+        <br/>
+        <br/>
+        <br/>
+        <label>
+          ReportVersion
+          <input type="text" value={reportversionname} onChange={(evt) => setReportversionname(evt.target.value)}/>
+        </label>
+        <br/>
+        <br/>
+        <label>
+          Select
+          <input type="file" onChange={(evt) => setFile(evt.target.files[0])}/>
+        </label>
+        <br/>
+        <br/>
+        <button onClick={() => newFile()}>Upload</button>
+      </div> */}
+      <div className='uploadContainer'>
+            <form>
+                <div className="form-group">
+                    <label>Report Version</label>
+                    <input type = 'text' name = 'report' id='report' className="form-control" value={reportversionname} onChange={(evt) => setReportversionname(evt.target.value)}/>
+                </div>
+                <div className="form-group">
+                    <label>Select file</label>
+                    <input type = 'file' name = 'file' id='file' className="form-control" onChange={(evt) => setFile(evt.target.files[0])}/>
+                </div>
+            </form>
+            <button onClick={() => newFile()} className="btn btn-primary btn-block" >Submit</button>
+      </div>
     </div>
     
   )
