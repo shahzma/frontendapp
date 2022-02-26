@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 // import '../App.css';
 import {Navigate} from 'react-router-dom';
 import Header from './header';
+import{Container, Row, Col, Button } from 'react-bootstrap'
 
 
 function UploadFiles(props) {
     // const [ reportname, setReportName ] = useState("");
     const [ reportversionname, setReportversionname ] = useState("");
     const [ file, setFile ] = useState();
-  
+
+    let handleLogout = ()=>{
+      console.log('logout')
+      window.location.href='/'
+    }
+
     const newFile = () => {
         console.log(props.Token, props.Reportname)
       const uploadData = new FormData();
@@ -23,7 +29,10 @@ function UploadFiles(props) {
         },
         body: uploadData
       })
-      .then( res => console.log(res))
+      .then( res => {
+        console.log(res);
+        alert('File Uploaded Successfully')
+        })
       .catch(error => console.log(error))
     }
 
@@ -38,6 +47,12 @@ function UploadFiles(props) {
   return (
     <div>
       <Header/>
+      <Row>
+        <Col></Col>
+        <Col>
+        <Button style={{'margin':'10px', 'float':'Right', 'marginRight':'50px'}} onClick = {()=>handleLogout()}>Logout</Button>
+        </Col>
+      </Row>
       <h2 style={{textAlign:'center', marginTop:'20px'}}>Upload Your Files Here</h2>
       {/* <div className="App">
         <br/>

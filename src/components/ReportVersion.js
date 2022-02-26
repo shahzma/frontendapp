@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Link, Navigate} from 'react-router-dom';
 import img1 from '../images/Redseer_red.jpeg';
 import Header from './header';
-import{Container, Row, Col } from 'react-bootstrap'
+import{Container, Row, Col, Button } from 'react-bootstrap'
 import { Breadcrumb } from 'react-bootstrap';
 
 function ReportVersion(props) {
@@ -28,6 +28,10 @@ function ReportVersion(props) {
         .catch( error => console.error(error))
     },[props.Reportname, props.Token]);
 
+    let handleLogout = ()=>{
+        console.log('logout')
+        window.location.href='/'
+      }
 
     let handleOnClick=()=>{
         console.log('going to upload')
@@ -43,15 +47,22 @@ function ReportVersion(props) {
 
   return (
     <div>
-        <Header/>
-        <Breadcrumb>
-            <Breadcrumb.Item href="/">Logout</Breadcrumb.Item>
-            <Breadcrumb.Item href = '#'>
-                Reports
-            </Breadcrumb.Item>
-            <Breadcrumb.Item active>Reportversions</Breadcrumb.Item>
-        </Breadcrumb>
-        <h2 style={{textAlign:'center', marginTop:'20px'}}>Available Report versions</h2>
+        <Header/>  
+        <Row>
+            <Col>
+                <Breadcrumb>
+                    {/* <Breadcrumb.Item href="/">Logout</Breadcrumb.Item> */}
+                    <Breadcrumb.Item active>
+                        Reports
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item href = '#'>Report Versions</Breadcrumb.Item>
+                </Breadcrumb>
+            </Col>
+            <Col>
+            <Button style={{'margin':'10px', 'float':'Right', 'marginRight':'50px'}} onClick = {()=>handleLogout()}>Logout</Button>
+            </Col>
+        </Row>
+        <h2 style={{marginLeft:'38vw', marginTop:'20px'}}>Report Versions</h2>
         <div className='listContainer'>
             {/* <h6 style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>File Name <div style={{float:'right'}}>Actions</div></h6> */}
             <Row style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>
@@ -70,9 +81,9 @@ function ReportVersion(props) {
 
                 <Row key={repver.id} className="task">
                     <Col sm={5} style={{fontWeight:'bold'}}>{repver.report_version_name}</Col>
-                    <Col sm={4} style={{fontWeight:'bold'}}>{repver.created_on.split('T')[0]}</Col>
+                    <Col sm={4} style={{fontWeight:'bold'}}>{Date(repver.created_on).split(' ')[1]+" "+Date(repver.created_on).split(' ')[2]+" "+Date(repver.created_on).split(' ')[3]}</Col>
                     <Col sm={3}>
-                    <button style={{float:'right'}} onClick = {()=>getFileOnClick(repver.file)} className="btn btn-primary">
+                    <button style={{float:'right'}} onClick = {()=>getFileOnClick(repver.link)} className="btn btn-primary">
                         Get File
                     </button>
                     </Col>

@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import {Link, Navigate} from 'react-router-dom';
 import Header from './header';
-import{Container, Row, Col } from 'react-bootstrap'
+import{Container, Row, Col, Button } from 'react-bootstrap'
 import { Breadcrumb } from 'react-bootstrap';
 import img1 from '../images/Redseer_red.jpeg';
 
@@ -48,6 +48,11 @@ class Books extends Component {
     //   }
   }
 
+  handleLogout = ()=>{
+    console.log('logout')
+    window.location.href='/'
+  }
+
   render() {
     
     if(!this.props.Token){
@@ -57,11 +62,18 @@ class Books extends Component {
     return (
       <div>
         <Header/>
-        <Breadcrumb>
-          <Breadcrumb.Item href="/">Logout</Breadcrumb.Item>
-          <Breadcrumb.Item active>Reports</Breadcrumb.Item>
-        </Breadcrumb>
-        <h2 style={{textAlign:'center', marginTop:'20px'}}>Available Reports</h2>
+        <Row>
+          <Col>
+            <Breadcrumb>
+              {/* <Breadcrumb.Item href="/">Logout</Breadcrumb.Item> */}
+              {/* <Breadcrumb.Item active>Reports</Breadcrumb.Item> */}
+            </Breadcrumb>
+          </Col>
+          <Col>
+          <Button style={{'margin':'10px', 'float':'Right', 'marginRight':'50px'}} onClick = {()=>this.handleLogout()}>Logout</Button>
+          </Col>
+        </Row>
+        <h2 style={{marginLeft:'42vw' ,marginTop:'20px'}}>Reports</h2>
         <div className='listContainer'>
           {/* <h6 style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>File Name <div style={{float:'right'}}>Actions</div></h6> */}
           <Row style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>
@@ -80,7 +92,7 @@ class Books extends Component {
 
               <Row key={book.id} className="task">
                     <Col sm={5} style={{fontWeight:'bold'}}>{book.report}</Col>
-                    <Col sm={4} style={{fontWeight:'bold'}}>{book.date.split('T')[0]}</Col>
+                    <Col sm={4} style={{fontWeight:'bold'}}>{Date(book.date).split(' ')[1] +" " + Date(book.date).split(' ')[2]+" "+ Date(book.date).split(' ')[3] }</Col>
                     <Col sm={3}>
                     <Link to="/ReportVersion" style={{float:'right'}} onClick = {()=>this.handleOnClick(book.report, book.is_admin)} className="btn btn-primary">
                       View Report Versions
