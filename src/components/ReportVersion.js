@@ -41,6 +41,11 @@ function ReportVersion(props) {
         window.location.href=fileAddress
     }
 
+    let editOnClick=(id)=>{
+        console.log('id = ',id)
+        props.getReportVersionID(id);
+    }
+
     if(!props.Token){
         return <Navigate to = "/"/>
     }
@@ -83,6 +88,7 @@ function ReportVersion(props) {
                     <Col sm={5} style={{fontWeight:'bold'}}>{repver.report_version_name}</Col>
                     <Col sm={4} style={{fontWeight:'bold'}}>{Date(repver.created_on).split(' ')[1]+" "+Date(repver.created_on).split(' ')[2]+" "+Date(repver.created_on).split(' ')[3]}</Col>
                     <Col sm={3}>
+                    {props.IsAdmin?<Link to="/EditFiles" style={{marginLeft:'80px'}}onClick = {()=>editOnClick(repver.id)} className="btn btn-primary">Edit File</Link>:''}
                     <button style={{float:'right'}} onClick = {()=>getFileOnClick(repver.link)} className="btn btn-primary">
                         Get File
                     </button>

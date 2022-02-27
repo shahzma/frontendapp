@@ -6,12 +6,14 @@ import Login from './components/login';
 import ReportVersion from './components/ReportVersion';
 import UploadFiles from './components/UploadFiles';
 import Test from './components/test';
+import EditFiles from './components/EditFiles';
 
 function App() {
 
   let [Token, setToken] = useState('');
   let [IsAdmin, setIsAdmin] = useState(false)
   let [Reportname, setReportname] = useState('')
+  let [ReportVersionID, setReportVersionID] = useState('')
 
   let userLogin = (tok) => {
     setToken(tok);
@@ -23,6 +25,10 @@ function App() {
     console.log('reportnameapp = ', Reportname )
     console.log('isadminmain=', IsAdmin)
   }
+
+  let getReportVersionID = (id) => {
+    setReportVersionID(id)
+  }
   
 
   return (
@@ -31,8 +37,9 @@ function App() {
         <Route path = "/" element = {<Login userLogin={userLogin}/>}></Route>
         {console.log('RouterToken=',Token)}
         <Route path = "/reportlist" element = {<GetReportlist Token={Token} getReportName={getReportName}/>}/>
-        <Route path = "/ReportVersion" element = {<ReportVersion Token={Token} Reportname={Reportname} IsAdmin = {IsAdmin}/>}/>
+        <Route path = "/ReportVersion" element = {<ReportVersion Token={Token} Reportname={Reportname} IsAdmin = {IsAdmin} getReportVersionID = {getReportVersionID}/>}/>
         <Route path = "/UploadFiles" element = {<UploadFiles Token = {Token} Reportname={Reportname} IsAdmin = {IsAdmin}/>}/>
+        <Route path = "/EditFiles" element = {<EditFiles Token = {Token} Reportname={Reportname} IsAdmin = {IsAdmin} ReportVersionID = {ReportVersionID}/>}/>
         <Route path = "/Test" element = {<Test/>}/>
       </Routes>
     </Router>
