@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import '../App.css';
 import {Navigate} from 'react-router-dom';
 import Header from './header';
-import{Container, Row, Col, Button } from 'react-bootstrap'
+import{ Row, Col, Button } from 'react-bootstrap'
 
 
 function EditFiles(props) {

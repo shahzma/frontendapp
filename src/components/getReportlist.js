@@ -64,16 +64,13 @@ class Books extends Component {
         <Header/>
         <Row>
           <Col>
-            <Breadcrumb>
-              {/* <Breadcrumb.Item href="/">Logout</Breadcrumb.Item> */}
-              {/* <Breadcrumb.Item active>Reports</Breadcrumb.Item> */}
-            </Breadcrumb>
+          
           </Col>
           <Col>
-          <Button style={{'margin':'10px', 'float':'Right', 'marginRight':'50px'}} onClick = {()=>this.handleLogout()}>Logout</Button>
+          <Button style={{'margin':'10px', 'float':'Right', 'marginRight':'50px', 'backgroundColor':'#4D4A50', 'border':'None'}} onClick = {()=>this.handleLogout()}>Logout</Button>
           </Col>
         </Row>
-        <h2 style={{marginLeft:'42vw' ,marginTop:'20px'}}>Reports</h2>
+        <h2 style={{marginLeft:'42vw' ,marginTop:'20px', color:'#4D4A50'}}>Reports</h2>
         <div className='listContainer'>
           {/* <h6 style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>File Name <div style={{float:'right'}}>Actions</div></h6> */}
           <Row style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>
@@ -94,8 +91,8 @@ class Books extends Component {
                     <Col sm={5} style={{fontWeight:'bold'}}>{book.report}</Col>
                     <Col sm={4} style={{fontWeight:'bold'}}>{Date(book.date).split(' ')[1] +" " + Date(book.date).split(' ')[2]+" "+ Date(book.date).split(' ')[3] }</Col>
                     <Col sm={3}>
-                    <Link to="/ReportVersion" style={{float:'right'}} onClick = {()=>this.handleOnClick(book.report, book.is_admin)} className="btn btn-primary">
-                      View Report Versions
+                    <Link to="/ReportVersion" style={{float:'right' , backgroundColor:'#4D4A50', border:'None'}} onClick = {()=>this.handleOnClick(book.report, book.is_admin)} className="btn btn-primary">
+                      View Files
                     </Link>
                     </Col>
               </Row>

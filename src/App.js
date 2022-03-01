@@ -5,7 +5,6 @@ import GetReportlist from './components/getReportlist';
 import Login from './components/login';
 import ReportVersion from './components/ReportVersion';
 import UploadFiles from './components/UploadFiles';
-import Test from './components/test';
 import EditFiles from './components/EditFiles';
 
 function App() {
@@ -40,7 +39,6 @@ function App() {
         <Route path = "/ReportVersion" element = {<ReportVersion Token={Token} Reportname={Reportname} IsAdmin = {IsAdmin} getReportVersionID = {getReportVersionID}/>}/>
         <Route path = "/UploadFiles" element = {<UploadFiles Token = {Token} Reportname={Reportname} IsAdmin = {IsAdmin}/>}/>
         <Route path = "/EditFiles" element = {<EditFiles Token = {Token} Reportname={Reportname} IsAdmin = {IsAdmin} ReportVersionID = {ReportVersionID}/>}/>
-        <Route path = "/Test" element = {<Test/>}/>
       </Routes>
     </Router>
 

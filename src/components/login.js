@@ -80,7 +80,7 @@ class Login extends Component {
                         <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary btn-block" >Submit</button>
+                <button type="submit" className="btn btn-primary btn-block" style={{backgroundColor:'#4D4A50' , border:'None'}} >Submit</button>
             </form>
         </div>
       </div>

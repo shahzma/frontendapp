@@ -38,7 +38,8 @@ function ReportVersion(props) {
     }
 
     let getFileOnClick=(fileAddress)=>{
-        window.location.href=fileAddress
+        // window.location.href=fileAddress
+        window.open(fileAddress, "_blank")
     }
 
     let editOnClick=(id)=>{
@@ -55,19 +56,13 @@ function ReportVersion(props) {
         <Header/>  
         <Row>
             <Col>
-                <Breadcrumb>
-                    {/* <Breadcrumb.Item href="/">Logout</Breadcrumb.Item> */}
-                    <Breadcrumb.Item active>
-                        Reports
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item href = '#'>Report Versions</Breadcrumb.Item>
-                </Breadcrumb>
+                <h5 style={{color:'White', padding:'12px 30px'}}>Home / {props.Reportname} / Files</h5>
             </Col>
             <Col>
-            <Button style={{'margin':'10px', 'float':'Right', 'marginRight':'50px'}} onClick = {()=>handleLogout()}>Logout</Button>
+            <Button style={{'margin':'10px', 'float':'Right', 'marginRight':'50px', 'backgroundColor':'#4D4A50' , 'border':'None'}} onClick = {()=>handleLogout()}>Logout</Button>
             </Col>
         </Row>
-        <h2 style={{marginLeft:'38vw', marginTop:'20px'}}>Report Versions</h2>
+        <h2 style={{marginLeft:'38vw', marginTop:'20px', color:'#4D4A50'}}>{props.Reportname} files</h2>
         <div className='listContainer'>
             {/* <h6 style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>File Name <div style={{float:'right'}}>Actions</div></h6> */}
             <Row style = {{padding:'10px 20px', margin: '10px', color:'#A0AEBF', borderBottom:'0.5px solid #A0AEBF'}}>
@@ -88,8 +83,8 @@ function ReportVersion(props) {
                     <Col sm={5} style={{fontWeight:'bold'}}>{repver.report_version_name}</Col>
                     <Col sm={4} style={{fontWeight:'bold'}}>{Date(repver.created_on).split(' ')[1]+" "+Date(repver.created_on).split(' ')[2]+" "+Date(repver.created_on).split(' ')[3]}</Col>
                     <Col sm={3}>
-                    {props.IsAdmin?<Link to="/EditFiles" style={{marginLeft:'80px'}}onClick = {()=>editOnClick(repver.id)} className="btn btn-primary">Edit File</Link>:''}
-                    <button style={{float:'right'}} onClick = {()=>getFileOnClick(repver.link)} className="btn btn-primary">
+                    {props.IsAdmin?<Link to="/EditFiles" style={{marginLeft:'80px', backgroundColor:'#Ff6961', border:'None'}}onClick = {()=>editOnClick(repver.id)} className="btn btn-primary">Edit File</Link>:''}
+                    <button style={{float:'right' , backgroundColor:'#4D4A50', border:'None'}} onClick = {()=>getFileOnClick(repver.link)} className="btn btn-primary">
                         Get File
                     </button>
                     </Col>
@@ -99,7 +94,7 @@ function ReportVersion(props) {
             )}
             {/* <button onClick = {()=>handleOnClick()}>Uploadfile</button> */}
         </div>
-        {props.IsAdmin?<Link to="/UploadFiles" style={{marginLeft:40}}onClick = {()=>handleOnClick()} className="btn btn-primary">Upload Files</Link>:''}
+        {props.IsAdmin?<Link to="/UploadFiles" style={{marginLeft:40 , backgroundColor:'#4D4A50', border:'None'}}onClick = {()=>handleOnClick()} className="btn btn-primary">Upload Files</Link>:''}
     </div>
   )
 }

@@ -4,8 +4,8 @@
   box-sizing: border-box;
 }
 body {
-  /* background: #1C8EF9; */
-  background: #F7FAFC; 
+  background: #Ff6961;
+  /* background: #F7FAFC;  */
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -101,8 +101,9 @@ color: red;
 
 .breadcrumb {
   padding-left: 2vw;
-  background-color: #F7FAFC;
+  background-color: #Ff6961;
 }
+
 
 .uploadContainer {
   margin-left: 25%;
